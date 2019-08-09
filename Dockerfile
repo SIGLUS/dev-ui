@@ -50,6 +50,6 @@ COPY styleguide ./styleguide
 # Port 9000 used for dev server
 # Port 9876 user for karma debugger
 EXPOSE 9000 9876
-
+USER nodejs
 RUN chown -R nodejs:nodejs /dev-ui \
     && chown -R nodejs:nodejs /app
