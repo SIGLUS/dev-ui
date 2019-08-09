@@ -1,5 +1,10 @@
 FROM debian:stretch
 
+RUN set -o errexit -o nounset \
+    && echo "Adding nodejs user and group" \
+    && groupadd --system --gid 112 nodejs \
+    && useradd --system --gid nodejs --uid 112 --shell /bin/bash --create-home nodejs \
+  
 WORKDIR /root
 
 # NOTE bzip2 is required by PhantomJS-prebuilt
@@ -47,3 +52,6 @@ COPY styleguide ./styleguide
 # Port 9000 used for dev server
 # Port 9876 user for karma debugger
 EXPOSE 9000 9876
+
+RUN chown -R nodejs:nodejs /dev-ui \
+    && chown -R nodejs:nodejs /app
