@@ -19,9 +19,10 @@ RUN apt-get install -y nodejs
 
 RUN npm install -g grunt-cli phantomjs-prebuilt yarn
 
+RUN mkdir -p /dev-ui /app
+RUN chown -R nodejs:nodejs /dev-ui \
+    && chown -R nodejs:nodejs /app
 WORKDIR /dev-ui
-VOLUME ["/dev-ui", "/app"]
-
 # Default license header
 COPY LICENSE-HEADER .
 
@@ -50,6 +51,3 @@ COPY styleguide ./styleguide
 # Port 9000 used for dev server
 # Port 9876 user for karma debugger
 EXPOSE 9000 9876
-USER nodejs
-RUN chown -R nodejs:nodejs /dev-ui \
-    && chown -R nodejs:nodejs /app
