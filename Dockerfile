@@ -1,10 +1,8 @@
 FROM debian:stretch
 
-RUN set -o errexit -o nounset \
-    && echo "Adding nodejs user and group" \
-    && groupadd --system --gid 112 nodejs \
-    && useradd --system --gid nodejs --uid 112 --shell /bin/bash --create-home nodejs \
-  
+RUN groupadd --system --gid 112 nodejs \
+    && useradd --system --gid nodejs --uid 112 --shell /bin/bash --create-home nodejs
+
 WORKDIR /root
 
 # NOTE bzip2 is required by PhantomJS-prebuilt
