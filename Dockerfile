@@ -22,6 +22,7 @@ RUN npm install -g grunt-cli phantomjs-prebuilt yarn
 RUN mkdir -p /dev-ui /app
 RUN chown -R nodejs:nodejs /dev-ui \
     && chown -R nodejs:nodejs /app
+USER nodejs
 WORKDIR /dev-ui
 # Default license header
 COPY LICENSE-HEADER .
