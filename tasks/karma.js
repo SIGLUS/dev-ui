@@ -19,7 +19,8 @@ module.exports = function(grunt) {
         glob = require('glob'),
         inEachAppDir = require('../ordered-application-directory'),
         tmp = path.join(process.cwd(), grunt.option('app.tmp'), 'javascript', 'tests'),
-        testFilePattern = '**/*.spec.js';
+        testFilePattern = '**/*.spec.js',
+        ignoreTestFilePattern = '**/local-database.spec.js';
 
     process.env.CHROME_BIN = require('puppeteer').executablePath();
 
@@ -93,6 +94,9 @@ module.exports = function(grunt) {
                         path.join(grunt.option('app.tmp'), 'javascript/src/**/*.js'),
                 path.join(tmp, '**/*builder.spec.js'),
                 path.join(tmp, testFilePattern)
+            ],
+            exclude: [
+                path.join(tmp, ignoreTestFilePattern)
             ]
         },
         unit: {
