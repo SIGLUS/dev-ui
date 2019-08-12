@@ -55,7 +55,8 @@ module.exports = function(grunt) {
                 'karma-junit-reporter'
             ],
             exclude: [
-                'app.js'
+                'app.js',
+                path.join(tmp, ignoreTestFilePattern)
             ],
             /* REPORTERS */
             reporters: ['progress', 'coverage', 'junit'],
@@ -94,9 +95,6 @@ module.exports = function(grunt) {
                         path.join(grunt.option('app.tmp'), 'javascript/src/**/*.js'),
                 path.join(tmp, '**/*builder.spec.js'),
                 path.join(tmp, testFilePattern)
-            ],
-            exclude: [
-                path.join(tmp, ignoreTestFilePattern)
             ]
         },
         unit: {
