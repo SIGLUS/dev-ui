@@ -42,7 +42,7 @@
     "eqeqeq": "error",
     "space-infix-ops": "error",
     "line-comment-position": ["error", { "position": "above", "applyDefaultIgnorePatterns": false }],
-    "complexity": ["error", 10],
+    "complexity": ["error", 20],
     "no-else-return": "error",
     "jasmine/no-focused-tests": "error",
     "jasmine/expect-matcher": "error",
